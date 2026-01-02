@@ -1,5 +1,3 @@
-food delivery app
-
 === Google Fonts CDN ===
 
 /* Import Google Fonts (Lilita One, Oswald, Roboto) */

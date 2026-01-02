@@ -6,23 +6,25 @@ const Footer = () => {
   // Scroll State
   const [isVisible, setIsVisible] = useState(false);
   const scrollTop = () => {
-    Window.scrollTop({
-      top: 0,
-      behaviour: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const listenToScroll = () => {
-    let heightToHidden = 250;
-    const WindowScroll =
-      document.body.scrolltop || document.documentElement.scrollTop;
+    const heightToHidden = 250;
+    const windowScroll =
+      document.documentElement.scrollTop || document.body.scrollTop;
 
-    WindowScroll > heightToHidden ? setIsVisible(true) : setIsVisible(false);
+    setIsVisible(windowScroll > heightToHidden);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", listenToScroll);
-  });
+
+    return () => {
+      window.removeEventListener("scroll", listenToScroll);
+    };
+  }, []);
+
   return (
     <>
       <footer>

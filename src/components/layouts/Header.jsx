@@ -1,62 +1,61 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import "../../styles/HeaderStyle.css";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import logo from "../../assets/logo/logo.png";
-import { useState } from "react";
+import "../../styles/HeaderStyle.css";
+
+const sections = ["home", "about", "menu", "shop", "blog", "contact"];
 
 const Header = () => {
   const [nav, setNav] = useState(false);
-  //scroll navbar
-  const changeValueOnScroll = () => {
-    const scrollValue = document?.documentElement?.scrollTop;
-    scrollValue > 100 ? setNav(true) : setNav(false);
-  };
-  window.addEventListener("scroll", changeValueOnScroll);
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // sticky navbar
+      setNav(window.scrollY > 100);
+
+      // scrollspy logic
+      let current = "home";
+
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          current = id;
+        }
+      });
+
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // run once on load
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header>
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        className={`${nav === true ? "sticky" : "navbar"}`}
-      >
+      <Navbar expand="lg" className={nav ? "sticky" : "navbar"}>
         <Container>
           <Navbar.Brand href="#home">
-            <Link to="/" className="logo">
-              <img src={logo} alt="logo" className="logo-fluid" />
-            </Link>
+            <img src={logo} alt="logo" height={70} className="logo-fluid" />
           </Navbar.Brand>
-          <Navbar.Toggle
-            className="navbar-toggler"
-            aria-controls="basic-navbar-nav"
-          />
-          <Navbar.Collapse id="basic-navbar-nav">
+
+          <Navbar.Toggle />
+          <Navbar.Collapse>
             <Nav className="ms-auto">
-              <Nav.Link className="nav-link" as={Link} to="/">
-                Home
-              </Nav.Link>
-              <Nav.Link className="nav-link" as={Link} to="/about">
-                About
-              </Nav.Link>
-              <Nav.Link className="nav-link" as={Link} to="/menu">
-                Menu
-              </Nav.Link>
-              <Nav.Link className="nav-link" as={Link} to="/shop">
-                Shop
-              </Nav.Link>
-              <Nav.Link className="nav-link" as={Link} to="/blog">
-                Blog
-              </Nav.Link>
-              <Nav.Link className="nav-link" as={Link} to="/contact">
-                Contact
-              </Nav.Link>
-              <Nav.Link className="nav-link" as={Link} to="/cart">
-                <div className="cart">
-                  <i className="bi bi-bag fs-5">
-                    <em className="roundpoint">2</em>
-                  </i>
-                </div>
-              </Nav.Link>
+              {sections.map((sec) => (
+                <Nav.Link
+                  key={sec}
+                  href={`#${sec}`}
+                  className={activeSection === sec ? "active" : ""}
+                >
+                  {sec}
+                </Nav.Link>
+              ))}
             </Nav>
           </Navbar.Collapse>
         </Container>

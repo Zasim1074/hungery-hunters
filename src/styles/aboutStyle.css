@@ -1,0 +1,8 @@
+/* /Users/zasimquraishi/IT/Projects/hungery-hunters/src/assets/hero/hero-1.jpg */
+
+/* Story Section */
+.story_section {
+  position: relative;
+  background: url("../assets/hero/hero-1.jpg");
+  /* background-size: cover; */
+}

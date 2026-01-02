@@ -1,40 +1,43 @@
-import React from "react";
 import Layout from "../../components/layouts/Layout";
-import "./../../styles/homeStyle.css";
-import Section1 from "./Section1";
-import Section2 from "./Section2";
-import Section3 from "./Section3";
-import Section4 from "./Section4";
-import Section5 from "./Section5";
-import Section6 from "./Section6";
-import Section7 from "./Section7";
+import Hero from "./Hero";
+import About from "./About";
+import Menu from "./Menu";
+import Promotion from "./Promotion";
+import Shop from "./Shop";
+import Blog from "./Blog";
+import Contact from "./Contact";
 
 const Home = () => {
   return (
-    <>
-      <Layout>
-        {/* Home section Hero Banner */}
-        <Section1 />
+    <Layout>
+      <section id="home">
+        <Hero />
+      </section>
 
-        {/* Home section About */}
-        <Section2 />
+      <section id="about">
+        <About />
+      </section>
 
-        {/* Home Section Menu */}
-        <Section3 />
+      <section id="menu">
+        <Menu />
+      </section>
 
-        {/* Home Section Promotion */}
-        <Section4 />
+      <section id="shop">
+        <Promotion />
+      </section>
 
-        {/* Home Section Shop */}
-        <Section5 />
+      <section id="shop">
+        <Shop />
+      </section>
 
-        {/* Home Section Blog */}
-        <Section6 />
+      <section id="blog">
+        <Blog />
+      </section>
 
-        {/* Home section Contact */}
-        <Section7 />
-      </Layout>
-    </>
+      <section id="contact">
+        <Contact />
+      </section>
+    </Layout>
   );
 };
 

@@ -26,6 +26,7 @@ header .navbar.sticky {
   -moz-box-shadow: 0 2px 3px rgba(96, 96, 96, 0.1);
   box-shadow: 0 2px 3px rgba(96, 96, 96, 0.1);
 }
+
 @keyframes stickyTransition {
   0% {
     opacity: 0;
@@ -89,7 +90,6 @@ header .navbar .roundpoint {
   right: -8px;
 }
 
-
 header .sticky .roundpoint {
   width: 16px;
   height: 16px;
@@ -108,6 +108,16 @@ header .sticky .roundpoint {
 header .roundpoint:hover {
   background: var(--yellow) !important;
   color: var(--white) !important;
+}
+
+header .nav-link.active {
+  color: var(--yellow) !important;
+  border-bottom: 2px solid var(--yellow);
+}
+
+header .sticky .nav-link.active {
+  color: var(--light-red) !important;
+  border-bottom: 2px solid var(--light-red);
 }
 
 /* Media Queries */
