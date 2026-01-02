@@ -1,20 +1,23 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import "../../styles/HeaderStyle.css";
 
+// ONLY scroll-based sections here
 const sections = ["home", "about", "menu", "shop", "blog", "contact"];
 
 const Header = () => {
   const [nav, setNav] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       // sticky navbar
       setNav(window.scrollY > 100);
 
-      // scrollspy logic
+      // scrollspy
       let current = "home";
 
       sections.forEach((id) => {
@@ -31,7 +34,7 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // run once on load
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -44,18 +47,22 @@ const Header = () => {
             <img src={logo} alt="logo" height={70} className="logo-fluid" />
           </Navbar.Brand>
 
-          <Navbar.Toggle />
-          <Navbar.Collapse>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              {/* Scroll links */}
               {sections.map((sec) => (
                 <Nav.Link
                   key={sec}
                   href={`#${sec}`}
                   className={activeSection === sec ? "active" : ""}
                 >
-                  {sec}
+                  {sec.charAt(0).toUpperCase() + sec.slice(1)}
                 </Nav.Link>
               ))}
+
+              {/* Route navigation */}
+              <Nav.Link onClick={() => navigate("/cart")}>Cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
