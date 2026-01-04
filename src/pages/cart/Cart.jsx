@@ -19,6 +19,7 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 import Footer from "../../components/layouts/Footer";
+import { FaBagShopping } from "react-icons/fa6";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -62,8 +63,11 @@ const Cart = () => {
             >
               <Nav>
                 <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
-                <Nav.Link className="active" onClick={() => navigate("/cart")}>
-                  Cart (1)
+                <Nav.Link
+                  className="active align-items-center"
+                  onClick={() => navigate("/cart")}
+                >
+                  <FaBagShopping /> &nbsp;( 1)
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>

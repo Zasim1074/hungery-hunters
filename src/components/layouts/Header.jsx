@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import "../../styles/HeaderStyle.css";
+import { FaBagShopping } from "react-icons/fa6";
 
 // ONLY scroll-based sections here
 const sections = ["home", "about", "menu", "shop", "blog", "contact"];
@@ -62,7 +63,9 @@ const Header = () => {
               ))}
 
               {/* Route navigation */}
-              <Nav.Link onClick={() => navigate("/cart")}>Cart</Nav.Link>
+              <Nav.Link onClick={() => navigate("/cart")}>
+                <FaBagShopping></FaBagShopping>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
