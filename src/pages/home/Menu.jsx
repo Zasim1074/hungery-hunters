@@ -11,6 +11,7 @@ import Image7 from "../../assets/menu/burger-17.jpg";
 import Image8 from "../../assets/menu/burger-18.jpg";
 import FoodCard from "../../components/layouts/FoodCard";
 import { Link } from "react-router-dom";
+import Promotion from "./Promotion";
 
 const mockData = [
   {
@@ -145,6 +146,10 @@ const Menu = ({ id }) => {
             </Col>
           </Row>
         </Container>
+      </section>
+
+      <section id={id}>
+        <Promotion />
       </section>
     </>
   );

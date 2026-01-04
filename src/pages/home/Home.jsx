@@ -2,7 +2,6 @@ import Layout from "../../components/layouts/Layout";
 import Hero from "./Hero";
 import About from "./About";
 import Menu from "./Menu";
-import Promotion from "./Promotion";
 import Shop from "./Shop";
 import Blog from "./Blog";
 import Contact from "./Contact";
@@ -20,10 +19,6 @@ const Home = () => {
 
       <section id="menu">
         <Menu />
-      </section>
-
-      <section id="shop">
-        <Promotion />
       </section>
 
       <section id="shop">

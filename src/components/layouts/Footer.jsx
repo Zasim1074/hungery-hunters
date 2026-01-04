@@ -51,8 +51,8 @@ const Footer = () => {
                 <h5>Order Now</h5>
                 <p>Quaerat neque purus ipsum</p>
                 <p>
-                  <Link to="9555-917-856" className="calling">
-                    9555-917-856
+                  <Link to="987-6543-`211" className="calling">
+                    987-6543-211
                   </Link>
                 </p>
               </div>
